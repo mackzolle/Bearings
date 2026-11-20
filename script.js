@@ -100,7 +100,7 @@ function getPopulationClue(guess, target) {
 function renderGuesses() {
     guessList.innerHTML = "";
 
-    for (const g of guesses) {
+    for (const g of guesses.slice().reverse()) {
         const row = document.createElement("div");
         row.className = "guess-row";
 
