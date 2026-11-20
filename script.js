@@ -192,6 +192,14 @@ function showReveal() {
     reveal.style.display = "block";
 }
 
+function makeGuess(country) {
+    return {
+        country: country,
+        distance: getDistance(country, answer),
+        arrow: getArrow(getBearing(country, answer))
+    };
+}
+
 function endGame(won) {
     gameOver = true;
     guessInput.disabled = true;
