@@ -2,6 +2,7 @@ const guesses = [];
 
 const MAX_GUESSES = 6;
 let gameOver = false;
+const practiceMode = new URLSearchParams(location.search).has("practice");
 
 const guessInput = document.getElementById("guessInput");
 const guessButton = document.getElementById("guessButton");
@@ -14,6 +15,7 @@ const shareButton = document.getElementById("shareButton");
 const shareMessage = document.getElementById("shareMessage");
 const countdown = document.getElementById("countdown");
 const reveal = document.getElementById("reveal");
+const playAgainButton = document.getElementById("playAgainButton");
 
 // Fill the autocomplete list from the data
 for (const country of countries) {
@@ -85,7 +87,11 @@ function getDailyAnswer() {
     return countries[getDayNumber() % countries.length];
 }
 
-const answer = getDailyAnswer();
+function getRandomAnswer() {
+    return countries[Math.floor(Math.random() * countries.length)];
+}
+
+const answer = practiceMode ? getRandomAnswer() : getDailyAnswer();
 const today = getDayNumber();
 
 function toRadians(degrees) {
@@ -196,21 +202,20 @@ function endGame(won) {
     } else {
         message.textContent = "Out of guesses! The answer was " + answer.name + ".";
     }
+
+    if (practiceMode) {
+        playAgainButton.style.display = "inline-block";
+    } else {
         shareButton.style.display = "inline-block";
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    }
+
     showReveal();
 }
 
-function makeGuess(country) {
-    return {
-        country: country,
-        distance: getDistance(country, answer),
-        arrow: getArrow(getBearing(country, answer))
-    };
-}
-
 function saveProgress() {
+    if (practiceMode) return;
     try {
         const data = {
             day: today,
@@ -265,6 +270,7 @@ function showStats() {
 }
 
 function recordResult(won) {
+    if (practiceMode) return;
     const s = loadStats();
     s.played++;
 
@@ -340,6 +346,9 @@ function submitGuess() {
 
 guessButton.addEventListener("click", submitGuess);
 shareButton.addEventListener("click", shareResult);
+playAgainButton.addEventListener("click", function () {
+    location.reload();
+});
 
 guessInput.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
@@ -358,5 +367,9 @@ unitSelect.addEventListener("change", function () {
 try {
     unitSelect.value = localStorage.getItem("Bearings-unit") || "km";
 } catch (e) {}
-loadProgress();
-showStats();
+if (practiceMode) {
+    stats.textContent = "Practice mode: this round doesn't count toward your streak.";
+} else {
+    loadProgress();
+    showStats();
+}
