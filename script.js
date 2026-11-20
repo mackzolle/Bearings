@@ -196,7 +196,8 @@ function endGame(won) {
     } else {
         message.textContent = "Out of guesses! The answer was " + answer.name + ".";
     }
-        shareButton.style.display = "inline-block";     updateCountdown();
+        shareButton.style.display = "inline-block";
+    updateCountdown();
     setInterval(updateCountdown, 1000);
     showReveal();
 }
