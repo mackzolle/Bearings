@@ -1,12 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<details class="how-to-play">
-    <summary>How to play</summary>
-    <p>Guess the mystery country in 6 tries.</p>
-    <p>Each guess shows the distance to the answer and an arrow pointing toward it.</p>
-    <p>✅ means the continent matches. 🔼 or 🔽 tells you if the answer's population is bigger or smaller.</p>
-    <p>A new country appears every day at midnight.</p>
-</details>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,27 +8,42 @@
 </head>
 <body>
     <div class="game-container">
-    <h1>Bearings</h1>
-    <p>Guess the mystery country!</p>
+        <h1>Bearings</h1>
+        <p>Guess the mystery country!</p>
 
-    <input type="text" id="guessInput" list="countryList" placeholder="Type a country...">
-    <datalist id="countryList"></datalist>
+        <p class="mode-links">
+            <a href="index.html">Daily</a> | <a href="index.html?practice">Practice</a>
+        </p>
 
-    <button id="guessButton">Guess</button>
+        <details class="how-to-play">
+            <summary>How to play</summary>
+            <p>Guess the mystery country in 6 tries.</p>
+            <p>Each guess shows the distance to the answer and an arrow pointing toward it.</p>
+            <p>✅ means the continent matches. 🔼 or 🔽 tells you if the answer's population is bigger or smaller.</p>
+            <p>A new country appears every day at midnight.</p>
+        </details>
 
-    <label for="unitSelect">Units:</label>
-<select id="unitSelect">
-    <option value="km">Kilometers</option>
-    <option value="mi">Miles</option>
-</select>
-    <p id="message"></p>
-    <div id="reveal"></div>
-    <div id="guessList"></div>
-    <p id="stats"></p>
-    <button id="shareButton" style="display: none;">Share result</button>
-    <p id="shareMessage"></p>
-    <p id="countdown"></p>
-</div>
+        <input type="text" id="guessInput" list="countryList" placeholder="Type a country...">
+        <datalist id="countryList"></datalist>
+
+        <button id="guessButton">Guess</button>
+
+        <label for="unitSelect">Units:</label>
+        <select id="unitSelect">
+            <option value="km">Kilometers</option>
+            <option value="mi">Miles</option>
+        </select>
+
+        <p id="message"></p>
+        <div id="reveal"></div>
+        <div id="guessList"></div>
+        <p id="stats"></p>
+
+        <button id="shareButton" style="display: none;">Share result</button>
+        <button id="playAgainButton" style="display: none;">New practice round</button>
+        <p id="shareMessage"></p>
+        <p id="countdown"></p>
+    </div>
 
     <script src="countries.js"></script>
     <script src="script.js"></script>
