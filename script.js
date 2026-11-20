@@ -100,24 +100,24 @@ function getPopulationClue(guess, target) {
 function renderGuesses() {
     guessList.innerHTML = "";
 
-    for (const g of guesses.slice().reverse()) {
+    for (let i = guesses.length - 1; i >= 0; i--) {
+        const g = guesses[i];
         const row = document.createElement("div");
         row.className = "guess-row";
 
         const continentMatch = g.country.continent === answer.continent;
 
         row.innerHTML =
-            "<strong>" + g.country.name + "</strong>" +
+            "<strong>#" + (i + 1) + " " + g.country.name + "</strong>" +
             "<span>" + formatDistance(g.distance) + " " + g.arrow + "</span>" +
             "<span class='" + (continentMatch ? "match" : "miss") + "'>" +
                 (continentMatch ? "✅ " : "❌ ") + g.country.continent +
             "</span>" +
             "<span>" + getPopulationClue(g.country, answer) + "</span>";
-        
+
         guessList.appendChild(row);
     }
 }
-
 function updateCountdown() {
     const now = new Date();
     const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
