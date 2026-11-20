@@ -22,6 +22,49 @@ for (const country of countries) {
     countryList.appendChild(option);
 }
 
+// Alternate names -> official name in countries.js. Keys must be lowercase.
+const aliases = {
+    "usa": "United States",
+    "us": "United States",
+    "united states of america": "United States",
+    "america": "United States",
+    "uk": "United Kingdom",
+    "great britain": "United Kingdom",
+    "britain": "United Kingdom",
+    "england": "United Kingdom",
+    "holland": "Netherlands",
+    "uae": "United Arab Emirates",
+    "burma": "Myanmar",
+    "czech republic": "Czechia",
+    "swaziland": "Eswatini",
+    "cape verde": "Cabo Verde",
+    "cote d'ivoire": "Ivory Coast",
+    "côte d'ivoire": "Ivory Coast",
+    "drc": "Democratic Republic of the Congo",
+    "dr congo": "Democratic Republic of the Congo",
+    "republic of congo": "Republic of the Congo",
+    "macedonia": "North Macedonia",
+    "east timor": "Timor-Leste",
+    "timor leste": "Timor-Leste",
+    "turkiye": "Turkey",
+    "türkiye": "Turkey",
+    "republic of korea": "South Korea",
+    "dprk": "North Korea",
+    "russian federation": "Russia",
+    "vatican": "Vatican City",
+    "holy see": "Vatican City",
+    "micronesia": "Federated States of Micronesia",
+    "state of palestine": "Palestine",
+    "palestinian territories": "Palestine",
+    "sao tome": "Sao Tome and Principe",
+    "são tomé and príncipe": "Sao Tome and Principe",
+    "bosnia": "Bosnia and Herzegovina",
+    "viet nam": "Vietnam",
+    "the gambia": "Gambia",
+    "the bahamas": "Bahamas",
+    "brunei darussalam": "Brunei"
+};
+
 function findCountry(name) {
     const cleaned = name.trim().toLowerCase();
     const target = (aliases[cleaned] || cleaned).toLowerCase();
