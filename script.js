@@ -23,11 +23,13 @@ for (const country of countries) {
 }
 
 function findCountry(name) {
+    const cleaned = name.trim().toLowerCase();
+    const target = (aliases[cleaned] || cleaned).toLowerCase();
+
     return countries.find(function (c) {
-        return c.name.toLowerCase() === name.trim().toLowerCase();
+        return c.name.toLowerCase() === target;
     });
 }
-
 const START_DATE = new Date(2026, 0, 1); // January 1, 2026 (months start at 0)
 
 function getDayNumber() {
