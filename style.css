@@ -1,45 +1,130 @@
+:root {
+    --bg: #0b1d33;
+    --card: #12304f;
+    --field: #0e2742;
+    --border: #24527f;
+    --text: #f3ead7;
+    --muted: #9fb3c8;
+    --accent: #e0b54c;
+    --accent-hover: #f0c964;
+    --good: #5fd38d;
+    --bad: #ef6f6c;
+}
+
 body {
-    background-color: #151515;
-    color: white;
-    font-family: Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--bg);
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    color: var(--text);
+    font-family: "Inter", Arial, sans-serif;
     text-align: center;
 }
 
 .game-container {
     width: 90%;
     max-width: 450px;
-    margin: 60px auto;
+    margin: 40px auto;
 }
 
 h1 {
-    font-size: 36px;
-    letter-spacing: 3px;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 40px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 4px;
 }
+
+.tagline {
+    color: var(--muted);
+    margin-top: 0;
+}
+
+.mode-links a {
+    color: var(--accent);
+}
+
+input,
+select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background-color: var(--field);
+    color: var(--text);
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
 input {
     display: block;
     width: 85%;
-    padding: 12px;
     margin: 12px auto;
-    border-radius: 6px;
-    border: none;
-    box-sizing: border-box;
+}
+
+select {
+    display: inline-block;
+    margin: 8px;
+}
+
+input::placeholder {
+    color: var(--muted);
+}
+
+input:focus,
+select:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+}
+
+label {
+    color: var(--muted);
 }
 
 button {
     padding: 12px 25px;
-    background-color: #1db954;
-    color: white;
+    background-color: var(--accent);
+    color: var(--bg);
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
+    margin: 8px;
 }
 
 button:hover {
-    background-color: #169c46;
+    background-color: var(--accent-hover);
 }
+
+button:disabled,
+input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.how-to-play {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin: 16px 0;
+    text-align: left;
+}
+
+.how-to-play summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--accent);
+}
+
 .guess-row {
-    background-color: #292929;
-    border-radius: 8px;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
     padding: 12px;
     margin: 10px 0;
     display: flex;
@@ -57,44 +142,25 @@ button:hover {
 }
 
 .match {
-    color: #1db954;
+    color: var(--good);
 }
 
 .miss {
-    color: #e5534b;
+    color: var(--bad);
 }
 
-button:disabled,
-input:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-#shareMessage {
-    white-space: pre-line;
-}
-.how-to-play {
-    background-color: #292929;
-    border-radius: 8px;
-    padding: 10px 14px;
-    margin: 16px 0;
-    text-align: left;
-}
-
-.how-to-play summary {
-    cursor: pointer;
-    font-weight: bold;
-}
-@media (max-width: 480px) {
-    h1 {
-        font-size: 28px;
-    }
-}
 #reveal {
     display: none;
-    background-color: #292929;
+    background-color: var(--card);
+    border: 1px solid var(--accent);
     border-radius: 12px;
     padding: 12px;
     margin: 16px 0;
+}
+
+#reveal h2 {
+    font-family: "Playfair Display", Georgia, serif;
+    color: var(--accent);
 }
 
 #reveal h2,
@@ -102,6 +168,18 @@ input:disabled {
     margin: 6px 0;
 }
 
-.mode-links a {
-    color: #1db954;
+#stats,
+#countdown {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+#shareMessage {
+    white-space: pre-line;
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 30px;
+    }
 }
