@@ -101,3 +101,7 @@ input:disabled {
 #reveal p {
     margin: 6px 0;
 }
+
+.mode-links a {
+    color: #1db954;
+}
